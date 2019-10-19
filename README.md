@@ -7,8 +7,6 @@ Flutter package for prompting users to upgrade when there is a newer version of 
 [![codecov](https://codecov.io/gh/larryaasen/upgrader/branch/master/graph/badge.svg)](https://codecov.io/gh/larryaasen/upgrader)
 [![pub package](https://img.shields.io/pub/v/upgrader.svg)](https://pub.dartlang.org/packages/upgrader)
 
-[Become a Patron!](https://www.patreon.com/bePatron?u=15315667)
-
 When a newer app version is availabe in the app store, a simple alert prompt widget or card is
 displayed. With today's modern app stores, there is little need to persuade users to upgrade
 because most of them are already using the auto upgrade feature. However, there may be times when
@@ -23,6 +21,7 @@ popup alert prompt, and the [UpgradeCard](#card-example) class is used to displa
 ## Alert Example
 
 Just wrap your body widget in the UpgradeAlert widget, and it will handle the rest.
+
 ```dart
 import 'package:flutter/material.dart';
 import 'package:upgrader/upgrader.dart';
@@ -55,11 +54,11 @@ class MyApp extends StatelessWidget {
 
 ![image](screenshots/example1.png)
 
-
 ## Card Example
 
 Just return an UpgradeCard widget in your build method and a material design card will be displayed
 when an update is detected. The widget will have width and height of 0.0 when no update is detected.
+
 ```dart
 return Container(
         margin: EdgeInsets.fromLTRB(12.0, 0.0, 12.0, 0.0),
@@ -75,22 +74,23 @@ return Container(
 The UpgradeAlert widget can be customized by setting parameters in the constructor of the
 UpgradeAlert widget.
 
-* appcastConfig: the appcast configuration, defaults to ```null```
-* buttonTitleIgnore: the ignore button title, which defaults to ```Ignore```
-* buttonTitleLater: the later button title, which defaults to ```Later```
-* buttonTitleUpdate: the update button title, which defaults to ```Update Now```
-* client: an HTTP Client that can be replaced for mock testing, defaults to ```null```
-* daysUntilAlertAgain: days until alerting user again, which defaults to ```3```
-* debugDisplayAlways: always force the upgrade to be available, defaults to ```false```
-* debugDisplayOnce: display the upgrade at least once once, defaults to ```false```
-* debugLogging: display logging statements, which defaults to ```false```
-* onIgnore: Called when the ignore button is tapped, defaults to ```null```
-* onLater: Called when the ignore button is tapped, defaults to ```null```
-* onUpdate: Called when the ignore button is tapped, defaults to ```null```
-* prompt: the call to action message, which defaults to ```Would you like to update it now?```
-* title: the alert dialog title, which defaults to ```Update App?```
+- appcastConfig: the appcast configuration, defaults to `null`
+- buttonTitleIgnore: the ignore button title, which defaults to `Ignore`
+- buttonTitleLater: the later button title, which defaults to `Later`
+- buttonTitleUpdate: the update button title, which defaults to `Update Now`
+- client: an HTTP Client that can be replaced for mock testing, defaults to `null`
+- daysUntilAlertAgain: days until alerting user again, which defaults to `3`
+- debugDisplayAlways: always force the upgrade to be available, defaults to `false`
+- debugDisplayOnce: display the upgrade at least once once, defaults to `false`
+- debugLogging: display logging statements, which defaults to `false`
+- onIgnore: Called when the ignore button is tapped, defaults to `null`
+- onLater: Called when the ignore button is tapped, defaults to `null`
+- onUpdate: Called when the ignore button is tapped, defaults to `null`
+- prompt: the call to action message, which defaults to `Would you like to update it now?`
+- title: the alert dialog title, which defaults to `Update App?`
 
 ## Limitations
+
 These widgets work on both Android and iOS. When running on iOS the App Store will provide the
 latest app version and will display the prompt at the appropriate times.
 
@@ -122,6 +122,7 @@ is available on the app store.
 The Appcast class can be used stand alone or as part of Upgrader.
 
 ### Appcast Example
+
 ```dart
 final appcast = Appcast();
 final items = await appcast.parseAppcastItemsFromUri('https://raw.githubusercontent.com/larryaasen/upgrader/master/test/testappcast.xml');
@@ -129,6 +130,7 @@ final bestItem = appcast.bestItem();
 ```
 
 ### Appcast Sample File
+
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
@@ -146,12 +148,13 @@ final bestItem = appcast.bestItem();
 
 ## iTunes Search API
 
-There is a class in this Flutter package used by the upgrader widgets to download app details 
+There is a class in this Flutter package used by the upgrader widgets to download app details
 from the
 [iTunes Search API](https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api).
 The class ITunesSearchAPI can be used standalone to query iTunes for app details.
 
 ### ITunesSearchAPI Example
+
 ```dart
 final iTunes = ITunesSearchAPI();
 final resultsFuture = iTunes.lookupByBundleId('com.google.Maps');
@@ -161,9 +164,9 @@ resultsFuture.then((results) {
 ```
 
 ### Results
+
 [![image](screenshots/results.png)](screenshots/results.png)
 
 ## Contributing
-All [comments](https://github.com/larryaasen/upgrader/issues) and [pull requests](https://github.com/larryaasen/upgrader/pulls) are welcome.
 
-[Become a Patron!](https://www.patreon.com/bePatron?u=15315667)
+All [comments](https://github.com/JonathanMonga/upgrader2/issues) and [pull requests](https://github.com/JonathanMonga/upgrader2/pulls) are welcome.
