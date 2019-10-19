@@ -1,0 +1,12 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: cirrusci/flutter
+    steps:
+      - checkout
+      - run: flutter channel dev
+      - run: flutter doctor
+      - run: dartfmt -n --set-exit-if-changed ./packages/upgrader2/lib ./packages/upgrader2/test ./packages/upgrader2/example
+      - run: flutter test --coverage --coverage-path=lcov.info
+      - run: bash <(curl -s https://codecov.io/bash)
