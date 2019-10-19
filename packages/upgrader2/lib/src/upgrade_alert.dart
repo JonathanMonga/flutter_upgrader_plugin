@@ -5,7 +5,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'upgrader.dart';
+import 'upgrader2.dart';
 
 class _UpgradeBase extends StatefulWidget {
   /// The appcast configuration ([AppcastConfiguration]) used by [Appcast].

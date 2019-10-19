@@ -1,4 +1,4 @@
-name: upgrader
+name: upgrader2
 description: Flutter package for prompting users to upgrade when there is a newer version of the app in the store.
 version: 0.1.1+1
 author: Jonathan Monga <jmonga98@gmail.com>

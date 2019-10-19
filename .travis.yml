@@ -17,7 +17,7 @@ before_script:
   - ./flutter/bin/flutter doctor
 script:
   - ./flutter/bin/cache/dart-sdk/bin/dartfmt -n --set-exit-if-changed ./packages/upgrader2/lib ./packages/upgrader2/test ./packages/upgrader2/example || travis_terminate 1
-  - ./flutter/bin/flutter ./packages/upgrader2/test --coverage --coverage-path=./packages/upgrader2/lcov.info
+  - ./flutter/bin/flutter test --coverage --coverage-path=./packages/upgrader2/lcov.info
 after_success:
   - bash <(curl -s https://codecov.io/bash)
 

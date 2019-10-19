@@ -8,5 +8,5 @@ jobs:
       - run: flutter channel dev
       - run: flutter doctor
       - run: dartfmt -n --set-exit-if-changed ./packages/upgrader2/lib ./packages/upgrader2/test ./packages/upgrader2/example
-      - run: flutter ./packages/upgrader2/test --coverage --coverage-path=./packages/upgrader2/lcov.info
+      - run: flutter test --coverage --coverage-path=./packages/upgrader2/lcov.info
       - run: bash <(curl -s https://codecov.io/bash)
