@@ -1,27 +1,31 @@
+language: bash
 os:
   - linux
+env:
+  - FLUTTER_CHANNEL="stable"
+  - FLUTTER_CHANNEL="master"
 sudo: false
-branches:
-  only:
-    - master
-addons:
-  apt:
-    # Flutter depends on /usr/lib/x86_64-linux-gnu/libstdc++.so.6 version GLIBCXX_3.4.18
-    sources:
-      - ubuntu-toolchain-r-test # if we don't specify this, the libstdc++6 we get is the wrong version
-    packages:
-      - libstdc++6
-      - fonts-droid
 before_script:
-  - git clone https://github.com/flutter/flutter.git -b dev --single-branch
-  - ./flutter/bin/flutter doctor
+  - cd ..
+  - git clone https://github.com/flutter/flutter.git -b $FLUTTER_CHANNEL
+  - export PATH=$PATH:$PWD/flutter/bin:$PWD/flutter/bin/cache/dart-sdk/bin
+  - cd -
+  - flutter doctor
 script:
-  - ./flutter/bin/cache/dart-sdk/bin/dartfmt -n --set-exit-if-changed ./packages/upgrader2/lib ./packages/upgrader2/test ./packages/upgrader2/example || travis_terminate 1
-  - ./flutter/bin/flutter test --coverage --coverage-path=./packages/upgrader2/lcov.info
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
+  - set -e # abort CI if an error happens
+  # Change permission
+  - chmod 777 scripts/flutter_test.sh
+  - ./scripts/flutter_test.sh packages/updater2
+  # - ./scripts/flutter_test.sh packages/updater2/example
 
-# Avoid re-downloading packages across different builds if possible.
+  # export coverage
+  - if [ $FLUTTER_CHANNEL = "stable" ]; then
+    bash <(curl -s https://codecov.io/bash);
+    fi
+matrix:
+  fast_finish: true
+  allow_failures:
+    - env: FLUTTER_CHANNEL="master"
 cache:
   directories:
     - $HOME/.pub-cache

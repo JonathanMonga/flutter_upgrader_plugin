@@ -4,7 +4,7 @@
 
 import 'package:http/http.dart' as http;
 import 'package:mockito/mockito.dart';
-import 'package:upgrader2/upgrader2.dart';
+import 'package:upgrader2/upgrader.dart';
 
 // Create a MockClient using the Mock class provided by the Mockito package.
 // We will create a new instances of this class in each test.
