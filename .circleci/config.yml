@@ -9,5 +9,5 @@ jobs:
       - run: flutter doctor
       - run: dartfmt -n --set-exit-if-changed ./packages/upgrader2/lib ./packages/upgrader2/test ./packages/upgrader2/example
       - run: chmod 777 scripts/flutter_test.sh
-      - run: ./scripts/flutter_test.sh packages/updater2
+      - run: ./scripts/flutter_test.sh packages/upgrader2
       - run: bash <(curl -s https://codecov.io/bash)
