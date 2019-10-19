@@ -3,7 +3,7 @@
  */
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:upgrader2/upgrader.dart';
+import 'package:upgrader/upgrader.dart';
 import 'mockclient.dart';
 
 void main() {
